@@ -19,6 +19,19 @@ func main() {
 func Vote(w http.ResponseWriter, req *http.Request) {
 	log.Infof("Received Post value")
 
+	err := req.ParseForm()
+	if err != nil {
+		log.Error("Can not parse form!")
+	}
+
+	vote := req.PostFormValue("inputVal")
+	inf0 := req.PostFormValue("info")
+	mail := req.PostFormValue("mail")
+
+	log.Infof("Value is %v", vote)
+	log.Infof("Info is %v", inf0)
+	log.Infof("Mail is %v", mail)
+
 	fmt.Fprintf(w, "Thank you for your time!")
 
 }
@@ -34,15 +47,19 @@ func Homepage(w http.ResponseWriter, req *http.Request) {
 	  <font face="verdana" size="2" color="black" </font>
 	  <br>
   
-	  <form class="" action="/vote" method="post" enctype="text/plain">
+	  <form class="" action="/vote" method="post">
   
 		<label for="">Name</label>
-		<input type="text" name="" value="">
+		<input type="text" name="info" value="">
+
 		<label for="">email</label>
-		<input type="email" name="" value=""> <br>
+		<input type="email" name="mail" value=""> <br>
+		 
 		<label for="">Message</label> <br>
-		<textarea name="" rows="8" cols="52"></textarea>
+		<textarea name="inputVal" rows="8" cols="52"></textarea>
 		<input type="submit" name="">
+
+		
 	  </form>
     
 
