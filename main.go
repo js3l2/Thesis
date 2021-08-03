@@ -33,15 +33,48 @@ func Vote(w http.ResponseWriter, req *http.Request) {
 	log.Infof("Mail is %v", mail)
 
 	fmt.Fprint(w, `
-  <body>
-  <div class="container">
-    <font face="verdana" size="5" position="absolute" color="#7a005c" <h1>Thank you!</h1><br>
-    </font>
-
-
-    
   
-  `)
+  <h1 class="gradient-text">Thank you!</h1>
+  
+
+  <style>
+    .gradient-text {
+
+      background-color: red;
+
+
+      background-image: linear-gradient(45deg, #c21599, #ffc500);
+
+      background-size: 100%;
+      background-repeat: repeat;
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-background-clip: text;
+      -moz-text-fill-color: transparent;
+    }
+
+
+
+    body {
+      background-color: #181123;
+    }
+
+    header {
+      margin-top: 1em;
+      margin-top: calc(50vh - 3em);
+    }
+
+    h1 {
+      font-family: Verdana;
+      font-weight: normal;
+      font-size: 3em;
+      text-align: center;
+      margin-bottom: 0;
+      margin-bottom: -0.25em;
+    }
+  </style>
+   `)
 
 }
 
