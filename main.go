@@ -32,7 +32,16 @@ func Vote(w http.ResponseWriter, req *http.Request) {
 	log.Infof("Info is %v", inf0)
 	log.Infof("Mail is %v", mail)
 
-	fmt.Fprintf(w, "Thank you for your time!")
+	fmt.Fprint(w, `
+  <body>
+  <div class="container">
+    <font face="verdana" size="5" position="absolute" color="#7a005c" <h1>Thank you!</h1><br>
+    </font>
+
+
+    
+  
+  `)
 
 }
 
