@@ -39,194 +39,197 @@ func Vote(w http.ResponseWriter, req *http.Request) {
 func Homepage(w http.ResponseWriter, req *http.Request) {
 	log.Warnf("Connection established...%v", req)
 	fmt.Fprint(w, `
-	<body>
+<body>
   <div class="container">
-	<font face="verdana" size="5" position="absolute" color="#7a005c" <h1>Contact Form</h1><br>
-	  </body>
-	  <font face="verdana" size="2" color="#00e9f4" </font>
-	  <br>
+    <font face="verdana" size="5" position="absolute" color="#7a005c" <h1>Contact Form</h1><br>
+      <font face="verdana" size="2" color="#00e9f4" </font>
+        <br>
 
-	  <form class="" action="/vote" method="post">
+        <form class="" action="/vote" method="post">
 
-		<label for="">Name</label>
-		<input type="text" name="info" value="">
+          <label for="">Name</label>
+          <input type="text" name="info" value="">
 
-		<label for="">email</label>
-		<input type="email" name="mail" value=""> <br>
+          <label for="">email</label>
+          <input type="email" name="mail" value=""> <br>
 
-		<label for="">Message</label> <br>
-		<textarea name="inputVal" rows="2" cols="55"></textarea>
-    <a href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <input type="submit"name="">
-    </a>
+          <label for="">Message</label> <br>
+          <textarea name="inputVal" rows="2" cols="55"></textarea>
+          <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input type="submit" name="">
+          </a>
 
-
-
-
-	  </form>
-	  <style>
-	  .container {
-		position: absolute;
-		transform: translate(-50%,-50%);
-		top: 50%;
-		left: 50%;
-	  }
-
-	  form {
-		background: $white;
-		padding: 3em;
-		height: 320px;
-		border-radius: 20px;
-		border-left: 1px solid $white;
-		border-top: 1px solid $white;
-		backdrop-filter: blur(10px);
-		box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
-		text-align: center;
-		position: relative;
-		transition: all 0.2s ease-in-out;
+        </form>
+</body>
 
 
+<style>
+  .container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
 
-
-		}
-
-		input {
-		  background: transparent;
-		  width: 200px;
-		  padding: 1em;
-		  margin-bottom: 2em;
-		  border: none;
-		  border-left: 1px solid $white;
-		  border-top: 1px solid $white;
-		  border-radius: 5000px;
-		  backdrop-filter: blur(5px);
-		  box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
-		  color: #7a005c;
-		  font-family: Verdana;
-		  font-weight: 500;
-		  transition: all 0.2s ease-in-out;
-		  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  form {
+    background: $white;
+    padding: 3em;
+    height: 320px;
+    border-radius: 20px;
+    border-left: 1px solid $white;
+    border-top: 1px solid $white;
+    backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    transition: all 0.2s ease-in-out;
 
 
 
 
+  }
 
-		  }
-		}
-
-
-		.container form a {
-		  position: relative;
-		  display: inline-block;
-		  padding: 10px 20px;
-		  color: #03e9f4;
-		  font-size: 16px;
-		  text-decoration: none;
-		  text-transform: uppercase;
-		  overflow: hidden;
-		  transition: .5s;
-		  margin-top: 40px;
-		  letter-spacing: 4px
-		}
-
-		.container a:hover {
-		  background: #03e9f4;
-		  color: #fff;
-		  border-radius: 5px;
-		  box-shadow: 0 0 5px #03e9f4,
-		              0 0 25px #03e9f4,
-		              0 0 50px #03e9f4,
-		              0 0 100px #03e9f4;
-		}
-
-		.container a span {
-		  position: absolute;
-		  display: block;
-		}
-
-		.container a span:nth-child(1) {
-		  top: 0;
-		  left: -100%;
-		  width: 100%;
-		  height: 2px;
-		  background: linear-gradient(90deg, transparent, #03e9f4);
-		  animation: btn-anim1 1s linear infinite;
-		}
-
-		@keyframes btn-anim1 {
-		  0% {
-		    left: -100%;
-		  }
-		  50%,100% {
-		    left: 100%;
-		  }
-		}
-
-		.container a span:nth-child(2) {
-		  top: -100%;
-		  right: 0;
-		  width: 2px;
-		  height: 100%;
-		  background: linear-gradient(180deg, transparent, #03e9f4);
-		  animation: btn-anim2 1s linear infinite;
-		  animation-delay: .25s
-		}
-
-		@keyframes btn-anim2 {
-		  0% {
-		    top: -100%;
-		  }
-		  50%,100% {
-		    top: 100%;
-		  }
-		}
-
-		.container a span:nth-child(3) {
-		  bottom: 0;
-		  right: -100%;
-		  width: 100%;
-		  height: 2px;
-		  background: linear-gradient(270deg, transparent, #03e9f4);
-		  animation: btn-anim3 1s linear infinite;
-		  animation-delay: .5s
-		}
-
-		@keyframes btn-anim3 {
-		  0% {
-		    right: -100%;
-		  }
-		  50%,100% {
-		    right: 100%;
-		  }
-		}
-
-		.container a span:nth-child(4) {
-		  bottom: -100%;
-		  left: 0;
-		  width: 2px;
-		  height: 100%;
-		  background: linear-gradient(360deg, transparent, #03e9f4);
-		  animation: btn-anim4 1s linear infinite;
-		  animation-delay: .75s
-		}
-
-		@keyframes btn-anim4 {
-		  0% {
-		    bottom: -100%;
-		  }
-		  50%,100% {
-		    bottom: 100%;
-		  }
-		}
+  input {
+    background: transparent;
+    width: 200px;
+    padding: 1em;
+    margin-bottom: 2em;
+    border: none;
+    border-left: 1px solid $white;
+    border-top: 1px solid $white;
+    border-radius: 5000px;
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+    color: #7a005c;
+    font-family: Verdana;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
 
 
 
-	  </style>
+
+  }
+  }
+
+
+  .container form a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px
+  }
+
+  .container a:hover {
+    background: #03e9f4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4,
+      0 0 25px #03e9f4,
+      0 0 50px #03e9f4,
+      0 0 100px #03e9f4;
+  }
+
+  .container a span {
+    position: absolute;
+    display: block;
+  }
+
+  .container a span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #03e9f4);
+    animation: btn-anim1 1s linear infinite;
+  }
+
+  @keyframes btn-anim1 {
+    0% {
+      left: -100%;
+    }
+
+    50%,
+    100% {
+      left: 100%;
+    }
+  }
+
+  .container a span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s
+  }
+
+  @keyframes btn-anim2 {
+    0% {
+      top: -100%;
+    }
+
+    50%,
+    100% {
+      top: 100%;
+    }
+  }
+
+  .container a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s
+  }
+
+  @keyframes btn-anim3 {
+    0% {
+      right: -100%;
+    }
+
+    50%,
+    100% {
+      right: 100%;
+    }
+  }
+
+  .container a span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #03e9f4);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s
+  }
+
+  @keyframes btn-anim4 {
+    0% {
+      bottom: -100%;
+    }
+
+    50%,
+    100% {
+      bottom: 100%;
+    }
+  }
+</style>
 
 	`)
 
