@@ -96,13 +96,13 @@ func Homepage(w http.ResponseWriter, req *http.Request) {
           <input type="email" name="mail" value=""> <br>
 
           <label for="">Message</label> <br>
-          <textarea name="inputVal" rows="2" cols="55"></textarea>
+          <textarea name="inputVal" id="ar" rows="10" cols="55"></textarea>
           <a href="#">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
-            <input type="submit" name="">
+            <input type="submit" id="submit" name="">
           </a>
 
         </form>
@@ -158,7 +158,18 @@ func Homepage(w http.ResponseWriter, req *http.Request) {
 
   }
   }
+   
 
+  .ar{
+    resize: none;
+  }
+
+  #submit {
+    text-transform: uppercase;
+    padding: 5px;
+    margin: 3px;
+    width: 100px;
+  }
 
   .container form a {
     position: relative;
