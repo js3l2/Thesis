@@ -85,6 +85,7 @@ func ProcessVote(vote string) int {
 	_, err := strconv.Atoi(vote)
 	if err != nil {
 		log.Errorf("User entered a string!", vote)
+		log.Fatal(err)
 	}
 	return 0
 }
