@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -32,6 +33,7 @@ func Vote(w http.ResponseWriter, req *http.Request) {
 	log.Infof("Info is %v", inf0)
 	log.Infof("Mail is %v", mail)
 
+	ProcessVote(vote)
 	fmt.Fprint(w, `
   
   <h1 class="gradient-text">Thank you!</h1>
@@ -78,6 +80,15 @@ func Vote(w http.ResponseWriter, req *http.Request) {
 
 }
 
+func ProcessVote(vote string) int {
+	log.Warnf("Into ProcessVote with parameter: %v", vote)
+	_, err := strconv.Atoi(vote)
+	if err != nil {
+		log.Errorf("User entered a string!", vote)
+	}
+	return 0
+}
+
 func Homepage(w http.ResponseWriter, req *http.Request) {
 	log.Warnf("Connection established...%v", req)
 	fmt.Fprint(w, `
@@ -96,7 +107,7 @@ func Homepage(w http.ResponseWriter, req *http.Request) {
           <input type="email" name="mail" value=""> <br>
 
           <label for="">Message</label> <br>
-          <textarea name="inputVal" id="ar" rows="10" cols="55"></textarea>
+          <textarea name="inputVal" id="ar" rows="10" cols="55"></textarea> <br>
           <a href="#">
             <span></span>
             <span></span>
@@ -153,9 +164,6 @@ func Homepage(w http.ResponseWriter, req *http.Request) {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
 
-
-
-
   }
   }
    
@@ -171,6 +179,11 @@ func Homepage(w http.ResponseWriter, req *http.Request) {
     width: 100px;
   }
 
+  #submit:hover {
+    background-color: #7a005c;
+    color: #03e9f4;
+    cursor: pointer;
+  }
   .container form a {
     position: relative;
     display: inline-block;
