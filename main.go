@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	log.SetLevel(log.DebugLevel)
 	log.Info("Web service up...")
 
 	http.HandleFunc("/", Homepage)
@@ -95,7 +96,7 @@ func Homepage(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprint(w, `
 <body>
   <div class="container">
-    <font face="verdana" size="5" position="absolute" color="#7a005c" <h1>Contact Form</h1><br>
+    <font face="verdana" size="5" position="absolute" color="#7a005c" <h1>Please enter a value to be forwarded to Kubernetes</h1><br>
       <font face="verdana" size="2" color="#00e9f4" </font>
         <br>
 
