@@ -12,7 +12,7 @@
     <!-- Navbar -->
     <div class="navbar">
         <div class="container flex">
-            <h1 class="logo">☸️</h1>
+            <h1 class="logo"><a href="index.html">☸️</a></h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -42,8 +42,7 @@
                 <h3 class="my-2">Main Steps</h3>
                 <nav>
                     <ul>
-                        <li><a class="text-primary" href="#">Introduction</a></li>
-                        <li><a href="#">About Kubernetes</a></li>
+                        <li><a href="#">Introduction</a></li>
                         <li><a href="#">Installation</a></li>
                     </ul>
                 </nav>
@@ -60,27 +59,32 @@
             </div>
             <div class="card">
                 <h2>Introduction</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio illo facere perferendis laborum? Similique recusandae incidunt eos dolorum aliquam ipsam unde perspiciatis laudantium totam quam laborum velit, at maxime minus?</p>
-
-                <div class="alert alert-success">
-                    <i class="fas fa-info"></i> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, animi?
-                </div>
-
-                <h3>Lorem, ipsum dolor.</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima totam magni eius vitae velit id, atque veritatis! At, vero porro.</p>
+                <p>This web application was written as part of my dissertation for the MSc of <a class="text-primary" href="https://www.ceid.upatras.gr/">Computer Engineering and Informatics</a>, University of Patras.
+                  The Thesis delves into the procedure and the required operations for developing applications as microservices along with the use of Google’s programming language Golang as well as
+                  deployment, scaling, and management of applications. It focuses on container technology as the appropriate implementations for containerization based on Docker containers and
+                  Kubernetes which is a container orchestration system for automated and how the latter has emerged as a rather significant part of the cloud computing infrastructure. The scaling
+                  procedures for developing and integrating the required tools for data collection and visualisation, Prometheus and Grafana, are exhibited. Link for the dissertation <a class="text-primary" href=
+                  "https://nemertes.library.upatras.gr/jspui/handle/" ><i class="fas fa-book"></i></a></p>
 
 
 
-                <h3>Installation</h3>
-                <pre><code>$ brew install docker</code></pre>
-                <p>linux</p>
-                <pre><code>$ </code></pre>
+                <h3>Installation <br> Docker 🐳</h3>
+                <p> The first steps is to install docker. Depending on the operation system the Docker engine is pretty simple to install.</p>
+                  <h4> Mac</h4>
+                  <p>After downloading the Docker.dmg:</p>
+                  <img src="images/macdocker.png" alt="">
 
-                <h3>Kubernetes</h3>
-                <p>mac</p>
-                <pre><code>$ brew install docker</code></pre>
-                <p>linux</p>
-                <pre><code>$ </code></pre>
+                <h4>Linux</h4>
+                <pre><code>$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin</code></pre>
+
+                <h3>Kubernetes
+                <p> Using the Homebrew package manager</p>
+                <h4>mac</h4>
+                <img src="images/kube.png" alt="">
+                <h4>Linux</h4>
+                <pre><code>$ brew install kubectl </code></pre>
+
+
 
 
 
@@ -92,34 +96,30 @@
 
         <div class="container grid grid-3">
             <div>
-                <h1>Kubernetes Metrics
-                </h1>
-                <p>Copyright &copy; 2022</p>
+                <h3>Kubernetes Metrics </h3>
+                <h5>Copyright &copy; 2022</h5>
                 <p> Dimitris Selis</p>
             </div>
             <nav>
                 <ul>
                   <br>
-                  <br>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="docs.html">Docs</a></li>
+                    <li><a class="text-primary" href="index.html">Home</a></li>
+                    <li><a class="text-primary" href="docs.html">Docs</a></li>
                 </ul>
             </nav>
             <div class="social">
               <br>
-              <p> Access the source code
+              <h4> Access the source code
                <a href="https://www.github.com/js3l2"><i class="fab fa-github fa-2x"></i></a>
-             </p>
-             <p>
+             </h4>
+             <h4>
                Find me on
                <a href="https://www.linkedin.com/in/dimitris-selis"><i class="fab fa-linkedin fa-2x"></i></a>
-             </p>
-             <p>
+             </h4>
+             <h4>
                Thesis
                <a href="https://nemertes.library.upatras.gr/jspui/handle/"><i class="fas fa-book fa-2x"></i></a>
-             </p>
-
-
+             </h4>
             </div>
         </div>
     </footer>
