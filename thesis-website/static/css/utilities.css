@@ -14,6 +14,19 @@
   margin: 10px;
 }
 
+.card2 {
+  background: rgb(4,122,237);
+  background: linear-gradient(9deg, rgba(4,122,237,1) 0%, rgba(95,222,205,1) 89%);
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 10px;
+  overflow-y: scroll;
+  height: 1000px;
+  padding: 1rem
+}
+
 .btn {
   display: inline-block;
   padding: 10px 30px;

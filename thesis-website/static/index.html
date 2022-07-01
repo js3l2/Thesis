@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/utilities.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Kubernetes Metrics</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Kubernetes Metrics</title>
 </head>
 <body>
     <!-- Navbar -->
@@ -24,84 +26,62 @@
 
     <!-- Showcase -->
     <section class="showcase">
-        <div class="container grid">
-            <div class="showcase-text">
-                <h1>Fetch air pressure metrics</h1>
-                <p>Fetch air pressure of your location and visualize results everywhere you are <br>Simple and Easy </p>
-            </div>
+      <div class="container grid">
+        <div class="showcase-text">
+          <h1>Fetch air pressure metrics</h1>
+          <p>Fetch air pressure of your location and visualize results everywhere you are <br>Simple and Easy </p>
+        </div>
 
-            <div class="form">
+        <div class="form">
           <h3>Press to get location info </h3>
-            <form class="" action="/vote" method="post">
+          <h3 id="pressure"></h3>
+
+          <form class="" action="/vote" method="post">
 
 
-            <a href="#">
+            <a href="#" id="getLocationBtn">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
-                  Location
+              Location
             </a>
+            <!-- <button type="submit">btn</button> -->
           </form>
         </div>
-            </div>
-        </div>
+      </div>
+      </div>
     </section>
-
-  /*  <!-- Stats
-    <section class="stats">
-        <div class="container">
-
-            <div class="grid grid-3 text-center my-4">
-                <div>
-                    <i class="fas fa-server fa-3x"></i>
-                    <h3>10,349,405</h3>
-                    <p class="text-secondary">Deployments</p>
-                </div>
-                <div>
-                    <i class="fas fa-upload fa-3x"></i>
-                    <h3>987 TB</h3>
-                    <p class="text-secondary">Published</p>
-                </div>
-                <div>
-                    <i class="fas fa-project-diagram fa-3x"></i>
-                    <h3>2,343,265</h3>
-                    <p class="text-secondary">Projects</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
 
 
 
     <!-- Languages -->
     <section class="languages">
-        <h2 class="md text-center my-2">
-            <br>This web-app was built using:
-        </h2>
-        <div class="container flex">
-            <div class="card">
-                <h4>GoLang</h4>
-                <img src="images/logos/go1.png" alt="">
-            </div>
-              <div class="card">
-                <h4>Docker</h4>
-                <img src="images/logos/docker.png" alt="">
-              </div>
-              <div class="card">
-                <h4>Kubernetes</h4>
-                <img src="images/logos/kube.png" alt="">
-              </div>
-              <div class="card">
-                <h4>Prometheus and Grafana</h4>
-                <img src="images/logos/promgraf.png" alt="">
-              </div>
-              <div class="card">
-                <h4>HTML & CSS</h4>
-                <img src="images/logos/htmlcss.png" alt="">
-              </div>
+      <h2 class="md text-center my-2">
+        <br><br>This web-app was built using:
+      </h2>
+      <div class="container flex">
+        <div class="card">
+          <h4>GoLang</h4>
+          <img src="images/logos/go1.png" alt="">
         </div>
+        <div class="card">
+          <h4>Docker</h4>
+          <img src="images/logos/docker.png" alt="">
+        </div>
+        <div class="card">
+          <h4>Kubernetes</h4>
+          <img src="images/logos/kube.png" alt="">
+        </div>
+        <div class="card">
+          <h4>Prometheus and Grafana</h4>
+          <img src="images/logos/promgraf.png" alt="">
+        </div>
+        <div class="card">
+          <h4>HTML & CSS</h4>
+          <img src="images/logos/htmlcss.png" alt="">
+        </div>
+      </div>
     </section>
 
 
@@ -141,4 +121,47 @@
             </div>
         </footer>
 </body>
+
+<script type="text/javascript">
+  const getLocationBtn = document.querySelector("#getLocationBtn")
+  const pressure = document.querySelector("#pressure")
+
+
+
+  getLocationBtn.addEventListener("click", () => {
+    // getLocation()
+    fetch("https://api.ipify.org/?format=json")
+      .then((res) => res.json())
+      .then((data) => {
+        // get geoData
+        fetch("http://www.geoplugin.net/json.gp?ip=" + data.ip)
+          .then((res2) => res2.json())
+          .then((geoData) => {
+            let liveData = {
+              lat: parseFloat(geoData.geoplugin_latitude),
+              long: parseFloat(geoData.geoplugin_longitude),
+            };
+            return liveData;
+          })
+          .then((data) => {
+             fetch("/vote", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            }).then(((p)=> p.json())).then((content) => {
+              pressure.innerHTML = "Pressure : " + content.pressure
+            })
+            // pressure.innerHTML = "Pressure : " + content.pressure
+
+          });
+      });
+
+  })
+
+
+
+</script>
+
 </html>

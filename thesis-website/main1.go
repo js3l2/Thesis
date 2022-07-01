@@ -4,40 +4,86 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"encoding/json"
+	"os"
+	"time"
+	"io/ioutil"
 
+	"github.com/Jeffail/gabs"
+	"github.com/joho/godotenv"
 	log "github.com/sirupsen/logrus"
 )
 
+type Location struct {
+	Lat  float64 `json:"lat"`
+	Long float64 `json:"long"`
+}
+
 func main() {
+
+	err := godotenv.Load("./.env")
+	if err != nil {
+		log.Fatal("❌ ", err.Error())
+	}
+
 	log.SetLevel(log.DebugLevel)
 	log.Info("Web service up...")
 
 	http.Handle("/", http.FileServer(http.Dir("./static")))
-
-  log.Fatal(http.ListenAndServe(":8081", nil))
 	http.HandleFunc("/vote", Vote)
+
+	http.ListenAndServe(":8081", nil)
 
 }
 
 func Vote(w http.ResponseWriter, req *http.Request) {
-	log.Infof("Received Post value")
+  log.Infof("Received Pressure")
 
-	err := req.ParseForm()
+	var location Location
+
+	err := json.NewDecoder(req.Body).Decode(&location)
 	if err != nil {
-		log.Error("Can not parse form!")
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+
 	}
 
-	vote := req.PostFormValue("inputVal")
-	inf0 := req.PostFormValue("info")
-	mail := req.PostFormValue("mail")
+	var apiKey = os.Getenv("OWM_API_KEY")
 
-	log.Infof("Value is %v", vote)
-	log.Infof("Info is %v", inf0)
-	log.Infof("Mail is %v", mail)
+	url := fmt.Sprintf(`https://api.openweathermap.org/data/2.5/onecall?lat=%.2f&lon=%.2f&exclude=&appid=%s`, location.Lat, location.Long, apiKey)
 
-	ProcessVote(vote)
+	c := http.Client{Timeout: time.Duration(5) * time.Second}
+	resp, err := c.Get(url)
+	if err != nil {
+		fmt.Printf("Error %s", err)
+
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+		fmt.Printf("Error %s", err)
+
+	}
+
+	jsonParsed, err := gabs.ParseJSON(body)
+	if err != nil {
+		fmt.Printf("Error %s", err)
+	}
+
+	var value float64 // this is pressure///
+	var ok bool
+
+	value, ok = jsonParsed.Path("current.pressure").Data().(float64)
+	if ok {
+		fmt.Println("✅", value)
+
+		fmt.Fprintf(w, `{"pressure":"%.2f"}`, value,)
+
+	}
 
 }
+
 
 func ProcessVote(vote string) int {
 	log.Warnf("Into ProcessVote with parameter: %v", vote)
@@ -47,37 +93,4 @@ func ProcessVote(vote string) int {
 		log.Fatal(err)
 	}
 	return 0
-}
-
-func Homepage(w http.ResponseWriter, req *http.Request) {
-	log.Warnf("Connection established...%v", req)
-	fmt.Fprint(w, `
-<body>
-  <div class="container">
-    <font face="verdana" size="5" position="absolute" color="#7a005c" <h1>Please enter a value to be forwarded to Kubernetes</h1><br>
-      <font face="verdana" size="2" color="#00e9f4" </font>
-        <br>
-
-        <form class="" action="/vote" method="post">
-
-          <label for="">Name</label>
-          <input type="text" name="info" value="">
-
-          <label for="">email</label>
-          <input type="email" name="mail" value=""> <br>
-
-          <label for="">Message</label> <br>
-          <textarea name="inputVal" id="ar" rows="10" cols="55"></textarea> <br>
-          <a href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <input type="submit" id="submit" name="">
-          </a>
-
-        </form>
-</body>
-`)
-
 }
