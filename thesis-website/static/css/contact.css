@@ -54,7 +54,9 @@ box-shadow: 0px 0px 6px 2px rgba(255,255,255,1);
 
 .contactForm h3 {
 font-size: 32px;
+color: #047aed;
 text-align: center;
+margin: 20px 100px;
 }
 
 form {
@@ -84,10 +86,9 @@ outline: none;
 width: 250px;
 height: 30px;
 margin-top: 15px;
-font-family: 'Lato', sans-serif;
 font-size: 15px;
 padding: 5px;
-border: 2px solid lightgray;
+border: 2px solid #fff;
 }
 
 #email:hover, #firstName:hover, #lastName:hover {
@@ -98,18 +99,61 @@ border: 2px solid #047aed;
   margin: 5px;
 }
 
-#btn {
-margin-top: 17px;
-padding: 10px 25px;
-border: none;
-background: #f0f0f5;
-cursor: pointer;
-font-family: 'Lato';
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 10px 25px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
 }
 
-#btn:hover {
-background: #047aed;
+.btn-9 {
+  border: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  margin-top: 15px;
+  margin-left: 60px;
 }
+.btn-9:after {
+  position: absolute;
+  content: " ";
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+   background-color: #047aed;
+  background-image: linear-gradient(315deg, #047aed 0%, #b621fe 84%);
+  transition: all 0.3s ease;
+}
+.btn-9:hover {
+  background: transparent;
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+  color: #fff;
+}
+.btn-9:hover:after {
+  -webkit-transform: scale(2) rotate(180deg);
+  transform: scale(2) rotate(180deg);
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+}
+
+
 
 @keyframes slide {
 
