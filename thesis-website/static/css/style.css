@@ -84,33 +84,33 @@ pre {
   justify-content: space-between;
 }
 
-/* Showcase */
-.showcase {
+/* info */
+.info {
   height: 400px;
   background-color: var(--primary-color);
   color: #fff;
   position: relative;
 }
 
-.showcase h1 {
+.info h1 {
   font-size: 40px;
 }
 
-.showcase p {
+.info p {
   margin: 20px 0;
 }
 
-.showcase .grid {
+.info .grid {
   overflow: visible;
   grid-template-columns: 55% auto;
   gap: 30px;
 }
 
-.showcase-text {
+.info-text {
   animation: slideInFromLeft 1s ease-in;
 }
 
-.showcase-form {
+.info-form {
   position: ;
   top: 60px;
   height: 350px;
@@ -121,12 +121,12 @@ pre {
   animation: slideInFromRight 1s ease-in;
 }
 
-.showcase-form .form-control {
+.info-form .form-control {
   margin: 30px 0;
 }
 
-.showcase-form input[type='text'],
-.showcase-form input[type='email'] {
+.info-form input[type='text'],
+.info-form input[type='email'] {
   border: 0;
   border-bottom: 1px solid #b4becb;
   width: 100%;
@@ -134,12 +134,12 @@ pre {
   font-size: 16px;
 }
 
-.showcase-form input:focus {
+.info-form input:focus {
   outline: none;
 }
 
-.showcase::before,
-.showcase::after {
+.info::before,
+.info::after {
   content: '';
   position: absolute;
   height: 100px;
@@ -279,42 +279,6 @@ pre {
 }
 
 
-/* Stats */
-.stats {
-  padding-top: 100px;
-  animation: slideInFromBottom 1s ease-in;
-}
-
-.stats-heading {
-  max-width: 500px;
-  margin: auto;
-}
-
-.stats .grid h3 {
-  font-size: 35px;
-}
-
-.stats .grid p {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* Cli */
-.cli .grid {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-}
-
-.cli .grid > *:first-child {
-  grid-column: 1 / span 2;
-  grid-row: 1 / span 2;
-}
-
-/* Cloud */
-.cloud .grid {
-  grid-template-columns: 4fr 3fr;
-}
-
 /* Languages */
 
 .languages .flex {
@@ -447,7 +411,7 @@ pre {
 /* Tablets and under */
 @media (max-width: 768px) {
   .grid,
-  .showcase .grid,
+  .info .grid,
   .stats .grid,
   .cli .grid,
   .cloud .grid,
@@ -457,17 +421,17 @@ pre {
     grid-template-rows: 1fr;
   }
 
-  .showcase {
+  .info {
     height: auto;
   }
 
-  .showcase-text {
+  .info-text {
     text-align: center;
     margin-top: 40px;
     animation: slideInFromTop 1s ease-in;
   }
 
-  .showcase-form {
+  .info-form {
     justify-self: center;
     margin: auto;
     animation: slideInFromBottom 1s ease-in;
@@ -511,7 +475,7 @@ pre {
     background-color: rgba(0, 0, 0, 0.1);
   }
 
-  .showcase-form {
+  .info-form {
     width: 300px;
   }
 }
